@@ -7,6 +7,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DaoServiceImpl implements DaoService {
 	
     private Connection getConnection() throws Exception {

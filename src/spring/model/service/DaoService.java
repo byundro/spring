@@ -10,5 +10,6 @@ public interface DaoService {
 	// 전체 저장된 정보
 	public List selectAll()throws Exception;
 	
+	// 하나의 정보 가져오기
 	public Object selectOne(String id)throws Exception;
 }
