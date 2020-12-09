@@ -18,9 +18,14 @@ import spring.model.service.FileService;
 @RequestMapping("/file/")
 public class FileBean {
    
-   @Autowired
-   private FileService FileServiceImpl = null;
-   
+	@Autowired
+	private FileService fileDAO = null;
+	
+	@Autowired
+	private FileService FileServiceImpl = null;
+	
+	
+	
    @RequestMapping("form.do")
    public String form() {
       return "1207/form";
@@ -55,11 +60,12 @@ public class FileBean {
       }
       return "redirect:/file/list.do";
    }
-   
+   // http://localhost:8080/spring/file/list.do
    @RequestMapping("list.do")
    public String list(Model model)throws Exception {
       
-      model.addAttribute("list", FileServiceImpl.selectAll());
+	   //model.addAttribute("list", FileServiceImpl.selectAll()); ->자바 DAO방식
+      model.addAttribute("list", fileDAO.selectAll()); //mybatis 방식
       
       return "1207/list";
    }
