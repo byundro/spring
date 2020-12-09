@@ -74,27 +74,27 @@ public class FileServiceImpl implements FileService {
    @Override
    public void fileDelete(int num) throws Exception {   
    }
-/*
+
    @Override
    public List selectAll() throws Exception {
-      conn = getConnection();
-      String sql = "select * from fileList";
-      pstmt = conn.prepareStatement(sql);
-      rs = pstmt.executeQuery();
-      List list = new ArrayList();
-      while(rs.next()) {
-         FileDTO dto = new FileDTO();
-         dto.setNum(rs.getInt("num"));
-         dto.setId(rs.getString("id"));
-         dto.setOrgname(rs.getString("orgname"));
-         dto.setSavename(rs.getString("savename"));
-         dto.setReg(rs.getTimestamp("reg"));
-         list.add(dto);
-      }
-      rs.close();
-      pstmt.close();
-      conn.close();
-      return list;
-      }
-      */
+	      conn = getConnection();
+	      String sql = "select * from fileList";
+	      pstmt = conn.prepareStatement(sql);
+	      rs = pstmt.executeQuery();
+	      List list = new ArrayList();
+	      while(rs.next()) {
+	         FileDTO dto = new FileDTO();
+	         dto.setNum(rs.getInt("num"));
+	         dto.setId(rs.getString("id"));
+	         dto.setOrgname(rs.getString("orgname"));
+	         dto.setSavename(rs.getString("savename"));
+	         dto.setReg(rs.getTimestamp("reg"));
+	         list.add(dto);
+	      }
+	      rs.close();
+	      pstmt.close();
+	      conn.close();
+	      return list;
+	   }
+      
 }

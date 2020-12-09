@@ -9,6 +9,8 @@ public interface FileService {
 	public int fileInsert(FileDTO dto)throws Exception;
 	public FileDTO selectNum(int num)throws Exception;
 	public List selectId(String id)throws Exception;
+	
 	public void fileUpdate(FileDTO dto)throws Exception;
 	public void fileDelete(int num)throws Exception;
+	public List selectAll() throws Exception;
 }
