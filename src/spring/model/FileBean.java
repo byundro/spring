@@ -21,8 +21,8 @@ public class FileBean {
 	@Autowired
 	private FileService fileDAO = null;
 	
-	@Autowired
-	private FileService FileServiceImpl = null;
+	//@Autowired
+	//private FileService FileServiceImpl = null;
 	
 	
 	
@@ -37,7 +37,7 @@ public class FileBean {
       MultipartFile mf = request.getFile("save");  // 원본파일객체
       String fileName = mf.getOriginalFilename();  // 파일명 
       dto.setOrgname(fileName);  // 파일의 원본이름을 DTO 추가 
-      int num = FileServiceImpl.fileInsert(dto);
+      int num = fileDAO.fileInsert(dto);
       
       // 파일명에서 확장자 찾기 
       String ext = fileName.substring(fileName.lastIndexOf("."));
@@ -47,7 +47,7 @@ public class FileBean {
       dto.setNum(num);
       dto.setSavename(saveName);
       
-      FileServiceImpl.fileUpdate(dto);  // sql Update 진행 
+      fileDAO.fileUpdate(dto);  // sql Update 진행 
       
       
       //String savePath = "D:\\eclipse-workspace\\spring\\WebContent\\save\\";  // 업로드파일 저장경로 
@@ -64,7 +64,7 @@ public class FileBean {
    @RequestMapping("list.do")
    public String list(Model model)throws Exception {
       
-	   //model.addAttribute("list", FileServiceImpl.selectAll()); ->자바 DAO방식
+	  //model.addAttribute("list", FileServiceImpl.selectAll()); //->자바 DAO방식
       model.addAttribute("list", fileDAO.selectAll()); //mybatis 방식
       
       return "1207/list";

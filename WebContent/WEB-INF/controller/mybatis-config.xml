@@ -15,7 +15,7 @@
          </dataSource>
       </environment>
    </environments>
-    -->
+-->
 	<typeAliases>
 		<typeAlias alias="fileDTO" type="spring.model.FileDTO" />
 	</typeAliases>

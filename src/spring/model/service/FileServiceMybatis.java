@@ -46,7 +46,7 @@ public class FileServiceMybatis implements FileService {
 	}
 
 	@Override
-	public List selectAll() throws Exception {
+	public List selectAll() throws Exception { 
 		// selectList - select 결과가 여러개 일때
 		// selectOne - select 결과가 하나일때
 		// SQL.xml 의 id속성으로 호출
