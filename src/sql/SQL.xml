@@ -8,4 +8,15 @@
 		select * from fileList
 	</select>
 
+	<!-- id="태그이름" resultType="sql 실행결과 타입(dto / String / int)"  -->
+	<!--  parameterType="DAO 에서 (?) 부분을 의미한다. -->
+	<select id="selectOne" resultType="String" parameterType="int">
+		select id from fileList where num=#{value}	
+	</select>
+	<select id="selectFile" resultType="String" parameterType="fileDTO">
+		select orgname from fileList where num=#{num} and id=#{id}
+	</select>
+	<select id="selectId" resultType="String" parameterType="String">
+		select savename from fileList where id=#{value}
+	</select>	
 </mapper>

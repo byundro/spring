@@ -1,6 +1,7 @@
 package spring.model;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +22,7 @@ public class FileBean {
 	@Autowired
 	private FileService fileDAO = null;
 	
-	//@Autowired
+	@Autowired
 	//private FileService FileServiceImpl = null;
 	
 	
@@ -47,7 +48,8 @@ public class FileBean {
       dto.setNum(num);
       dto.setSavename(saveName);
       
-      fileDAO.fileUpdate(dto);  // sql Update 진행 
+      fileDAO.fileUpdate(dto);
+      //fileDAO.fileUpdate(dto);  // sql Update 진행 
       
       
       //String savePath = "D:\\eclipse-workspace\\spring\\WebContent\\save\\";  // 업로드파일 저장경로 
@@ -78,5 +80,16 @@ public class FileBean {
 	   								// bean id   , parameterName,	   
 	   return mv;   
    }
-
+   
+   @RequestMapping("fileNum.do")
+   public String fileNum(int num , Model model , FileDTO dto) throws Exception {
+	   String id = fileDAO.selectId(num);
+	   List list = fileDAO.selectId(id);
+	   model.addAttribute("list", list);
+	   model.addAttribute("id", id);
+	   
+	   String orgname = fileDAO.selectFile(dto);
+	   model.addAttribute("orgname", orgname);
+	   return "1209/fileNum";
+   }
 }

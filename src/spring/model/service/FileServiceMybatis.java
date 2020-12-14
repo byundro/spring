@@ -30,8 +30,7 @@ public class FileServiceMybatis implements FileService {
 
 	@Override
 	public List selectId(String id) throws Exception {
-
-		return null;
+		return dao.selectList("test.selectId", id);
 	}
 
 	@Override
@@ -51,6 +50,17 @@ public class FileServiceMybatis implements FileService {
 		// selectOne - select 결과가 하나일때
 		// SQL.xml 의 id속성으로 호출
 		return dao.selectList("test.selectAll");
+	}
+
+	@Override
+	public String selectId(int num) throws Exception {
+		//				호출할 id   , parameterType 대입값
+		return dao.selectOne("test.selectOne" , num); 		
+	}
+
+	@Override
+	public String selectFile(FileDTO dto) throws Exception {
+		return dao.selectOne("test.selectFile" , dto);
 	}
 
 }

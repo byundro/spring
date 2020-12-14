@@ -21,6 +21,8 @@
 	</typeAliases>
 	<mappers> 
 		<mapper resource="/sql/SQL.xml" />
+		<mapper resource="/sql/memberSQL.xml" />
+		<mapper resource="/sql/boardSQL.xml" />
 	</mappers>
   
 </configuration>

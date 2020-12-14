@@ -96,5 +96,17 @@ public class FileServiceImpl implements FileService {
 	      conn.close();
 	      return list;
 	   }
+
+	@Override
+	public String selectId(int num) throws Exception {
+		
+		return null;
+	}
+
+	@Override
+	public String selectFile(FileDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
       
 }
