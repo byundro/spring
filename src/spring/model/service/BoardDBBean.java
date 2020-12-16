@@ -1,13 +1,15 @@
 package spring.model.service;
 import java.sql.*;
 import javax.sql.*;
-import javax.naming.*;
-import java.util.*; 
+
 import org.springframework.stereotype.Service;
 
-@Service
-public class BoardDBBean implements BoardDaoService {
+import javax.naming.*;
+import java.util.*; 
 
+@Service("boardDAO")
+public class BoardDBBean implements BoardDaoService{
+	
 	public Connection getConnection() throws Exception {
 		Context initCtx = new InitialContext();
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");

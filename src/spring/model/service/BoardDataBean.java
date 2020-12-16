@@ -1,4 +1,5 @@
 package spring.model.service;
+
 import java.sql.Timestamp;
 
 public class BoardDataBean{

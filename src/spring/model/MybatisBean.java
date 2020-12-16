@@ -17,5 +17,4 @@ public class MybatisBean {
 		System.out.println(dao);
 		return "1208/test";
 	}
-
 }

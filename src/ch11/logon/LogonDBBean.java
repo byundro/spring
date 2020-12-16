@@ -1,11 +1,16 @@
  package ch11.logon;
  
  import java.sql.*;
- import javax.sql.*; 
- import javax.naming.*;
+ import javax.sql.*;
+
+import org.springframework.stereotype.Service;
+
+import javax.naming.*;
  
+
  public class LogonDBBean {
-      
+    
+    
     private Connection getConnection() throws Exception {
       Context initCtx = new InitialContext();
       Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -30,7 +35,6 @@
             pstmt.setString(5, member.getJumin2());
             pstmt.setString(6, member.getEmail());
             pstmt.setString(7, member.getBlog());
-			//pstmt.setTimestamp(8, member.getReg_date());
             pstmt.executeUpdate();
         } catch(Exception ex) {
             ex.printStackTrace();

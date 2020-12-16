@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-	<h1>hello Spring..!!</h1>
-	<form action="/spring/pro2.do">
-	ÀÌ¸§ : <input type="text" name="name" /></br>
-	¹øÈ£ : <input type="text" name="num" />
-		<input type="submit" value="Àü¼Û" />
-	</form>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<h1>hello spring..!!</h1>
+
+<form action="/spring/pro.do">
+	ì´ë¦„ : <input type="text" name="name" /> <br />
+	ë²ˆí˜¸ : <input type="text" name="num" /> <br />
+		  <input type="submit"  value="ì „ì†¡" /> <br />
+</form>

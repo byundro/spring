@@ -5,24 +5,34 @@
 <configuration>
 <!-- DB Connection setting
 	<environments default="development">
-      <environment id="development">
-         <transactionManager type="JDBC" />
-         <dataSource type="POOLED">
-            <property name="driver" value="" />
-            <property name="url" value="" />
-            <property name="username" value="" />
-            <property name="password" value="" />
-         </dataSource>
-      </environment>
-   </environments>
--->
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="" />
+				<property name="url" value="" />
+				<property name="username" value="" />
+				<property name="password" value="" />
+			</dataSource>
+		</environment>
+	</environments>
+ -->	
 	<typeAliases>
-		<typeAlias alias="fileDTO" type="spring.model.FileDTO" />
+		<typeAlias alias="fileDTO"  type="spring.model.FileDTO" />
+		<typeAlias alias="memberDTO"  type="ch11.logon.LogonDataBean" />
 	</typeAliases>
 	<mappers> 
 		<mapper resource="/sql/SQL.xml" />
 		<mapper resource="/sql/memberSQL.xml" />
 		<mapper resource="/sql/boardSQL.xml" />
+		<mapper resource="/sql/testSQL.xml" />
 	</mappers>
   
 </configuration>
+
+
+
+
+
+
+
+

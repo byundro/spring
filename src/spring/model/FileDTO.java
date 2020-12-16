@@ -8,6 +8,7 @@ public class FileDTO {
 	private String orgname;
 	private String savename;
 	private Timestamp reg;
+		
 	public int getNum() {
 		return num;
 	}
@@ -38,5 +39,6 @@ public class FileDTO {
 	public void setReg(Timestamp reg) {
 		this.reg = reg;
 	}
-
+	
+	
 }

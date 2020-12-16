@@ -1,14 +1,15 @@
 <%@ page  contentType="text/html; charset=euc-kr"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/resource/etc/color.jspf"%> 
+<%@ include file="/resource/etc/color.jsp"%> 
+
 <html>
-<head>
-<title>회원탈퇴</title>
-<link href="/spring/resource/style/style.css"  rel="stylesheet" type="text/css">
+<head><title>메인입니다..</title>
+<link href="/spring/resource/style/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<c:if test="${check ==1 }">
+
+<c:if test="${check == 1 }">
 <body bgcolor="${bodyback_c}">
 <form method="post" action="/spring/member/main.do" name="userinput" >
 <table width="270" border="0" cellspacing="0" cellpadding="5" align="center">
@@ -30,7 +31,7 @@
 </table>
 </form>
 </c:if>
-<c:if test="${check !=1 }">
+<c:if test="${check != 1 }">
 	<script> 
 	  alert("비밀번호가 맞지 않습니다.");
       history.go(-1);

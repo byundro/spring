@@ -1,12 +1,14 @@
 <%@ page contentType = "text/html; charset=euc-kr" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/resource/etc/color.jspf"%>
+<%@ include file="/resource/etc/color.jsp"%>
 
 <html>
 <head>
 <title>게시판</title>
 <link href="/spring/resource/style/style_board.css" rel="stylesheet" type="text/css">
+</head>
+
 <style type='text/css'>
 <!--
 a:link { color:black; text-decoration:none; }
@@ -51,16 +53,16 @@ body,td,a,div,p,pre,input,textarea {font-family:굴림;font-size:9pt;}
   <tr height="30">      
     <td colspan="4" bgcolor="${value_c}" align="right" > 
 	  <input type="button" value="글수정" 
-       onclick="document.location.href='/study/board/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
+       onclick="document.location.href='/spring/board/updateForm.do?num=${article.num}&pageNum=${pageNum}'">
 	   &nbsp;&nbsp;&nbsp;&nbsp;
 	  <input type="button" value="글삭제" 
-       onclick="document.location.href='/study/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
+       onclick="document.location.href='/spring/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">
 	   &nbsp;&nbsp;&nbsp;&nbsp;
       <input type="button" value="답글쓰기" 
-       onclick="document.location.href='/study/board/writeForm.do?num=${article.num}&ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}'">
+       onclick="document.location.href='/spring/board/writeForm.do?num=${article.num}&ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}'">
 	   &nbsp;&nbsp;&nbsp;&nbsp;
        <input type="button" value="글목록" 
-       onclick="document.location.href='/study/board/list.do?pageNum=${pageNum}'">
+       onclick="document.location.href='/spring/board/list.do?pageNum=${pageNum}'">
     </td>
   </tr>
 </table>    

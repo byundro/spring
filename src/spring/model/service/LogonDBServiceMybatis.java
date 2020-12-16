@@ -8,42 +8,54 @@ import ch11.logon.LogonDataBean;
 
 @Service("memberDAO")
 public class LogonDBServiceMybatis implements LogonDBService {
-    
-   @Autowired
-   private SqlSessionTemplate dao = null;
-   
-   @Override
-   public void insertMember(LogonDataBean member) throws Exception {
-      dao.insert("member.insertMember" ,  member);
-   }
+	 
+	@Autowired
+	private SqlSessionTemplate dao = null;
+	
+	@Override
+	public void insertMember(LogonDataBean member) throws Exception {
+		dao.insert("member.insertMember" ,  member);
+	}
 
-   @Override
-   public int userCheck(LogonDataBean member) throws Exception {
-      return dao.selectOne("member.userCheck", member);
-   }
-   
-   @Override
-   public int confirmId(LogonDataBean member) throws Exception {
-      return dao.selectOne("member.userCheck", member);
-   }
+	@Override
+	public int userCheck(LogonDataBean member) throws Exception {
+		return dao.selectOne("member.userCheck", member);
+	}
+	
+	@Override
+	public int confirmId(LogonDataBean member) throws Exception {
+		return dao.selectOne("member.userCheck", member);
+	}
 
 
-   @Override
-   public LogonDataBean getMember(String id) throws Exception {
-      return dao.selectOne("member.member",id);
-   }
+	@Override
+	public LogonDataBean getMember(String id) throws Exception {
+		return dao.selectOne("member.member",id);
+	}
 
-   @Override
-   public void updateMember(LogonDataBean member) throws Exception {
-      dao.update("member.updateMember" , member);
-   }
+	@Override
+	public void updateMember(LogonDataBean member) throws Exception {
+		dao.update("member.updateMember" , member);
+	}
 
-   @Override
-   public int deleteMember(LogonDataBean member) throws Exception {
-      int check = dao.selectOne("member.userCheck", member);
-      if(check == 1) {
-         dao.delete("member.deleteMember", member);
-      }
-      return check;
-   }
+	@Override
+	public int deleteMember(LogonDataBean member) throws Exception {
+		int check = dao.selectOne("member.userCheck", member);
+		if(check == 1) {
+			dao.delete("member.deleteMember", member);
+		}
+		return check;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

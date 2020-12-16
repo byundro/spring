@@ -1,18 +1,16 @@
 <%@ page  contentType="text/html; charset=euc-kr"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/resource/etc/color.jspf"%> 
+<%@ include file="/resource/etc/color.jsp"%> 
 
 <html>
 <head><title>메인입니다..</title>
 <link href="/spring/resource/style/style.css" rel="stylesheet" type="text/css">
-<!-- <link href="/resource/style/bootstrap-3.3.7-dist/css/bootstrap.css"  rel="stylesheet" type="text/css"> -->
 </head>
 
 <c:if test="${sessionScope.memId == null}">
-
 <script language="javascript">
-
+<!--
 function focusIt()
 {      
    document.inform.id.focus();
@@ -23,21 +21,21 @@ function focusIt()
    inputForm=eval("document.inform");
    if(!inputForm.id.value){
      alert("아이디를 입력하세요..");
-    inputForm.id.focus();
-    return false;
+	 inputForm.id.focus();
+	 return false;
    }
    if(!inputForm.passwd.value){
      alert("아이디를 입력하세요..");
-    inputForm.passwd.focus();
-    return false;
+	 inputForm.passwd.focus();
+	 return false;
    }
  }
-
+//-->
 </script>
 </head>
 
 <body onLoad="focusIt();" bgcolor="${bodyback_c}">
-  <table width=500 cellpadding="0" cellspacing="0">
+  <table width=500 cellpadding="0" cellspacing="0"  align="center" border="1" >
       <tr>
        <td width="300" bgcolor="${bodyback_c}" height="20">
        &nbsp;
@@ -68,7 +66,7 @@ function focusIt()
 
            <td rowspan="3" bgcolor="${value_c}" align="center">
              ${sessionScope.memId} 님이 <br>
-             	방문하셨습니다
+             방문하셨습니다
              <form  method="post" action="/spring/member/logout.do">  
              <input type="submit"  value="로그아웃">
              <input type="button" value="회원정보변경" onclick="javascript:window.location='/spring/member/modify.do'">
@@ -83,3 +81,10 @@ function focusIt()
      </c:if>
  </body>
 </html>
+
+
+
+
+
+
+

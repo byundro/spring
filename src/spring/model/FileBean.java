@@ -18,78 +18,108 @@ import spring.model.service.FileService;
 @Controller
 @RequestMapping("/file/")
 public class FileBean {
-   
+	
 	@Autowired
 	private FileService fileDAO = null;
 	
 	@Autowired
-	//private FileService FileServiceImpl = null;
+	private FileService fileServiceImpl = null;
 	
+	@RequestMapping("form.do")
+	public String form() {
+		return "1207/form";
+	}
 	
+	@RequestMapping("upload.do")
+	public String upload(MultipartHttpServletRequest request,FileDTO dto)throws Exception {
+		// 파라미터로 전달된 업로드 파일을 받는다. 
+		MultipartFile mf = request.getFile("save");  // 원본파일객체
+		String fileName = mf.getOriginalFilename();  // 파일명 
+		dto.setOrgname(fileName);  // 파일의 원본이름을 DTO 추가 
+		int num = fileServiceImpl.fileInsert(dto);
+		
+		// 파일명에서 확장자 찾기 
+		String ext = fileName.substring(fileName.lastIndexOf("."));
+		String saveName = "file_"+num+ext;
+		
+		// DB savename update / 글번호와 저장이름을 DTO 대입  
+		dto.setNum(num);
+		dto.setSavename(saveName);
+		
+		fileServiceImpl.fileUpdate(dto);  // sql Update 진행 
+		
+		
+		//String savePath = "D:\\dev\\save\\";  // 업로드파일 저장경로
+		String savePath = request.getRealPath("save");
+		System.out.println(savePath);
+		File saveFile = new File(savePath+"\\"+saveName); // 저장위치 객체 
+		try {
+			mf.transferTo(saveFile);  // 파일 저장 (완료)!!
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/file/list.do";
+	}
+	// http://localhost:8080/spring/file/list.do
+	@RequestMapping("list.do")
+	public String list(Model model)throws Exception {
+		
+		//model.addAttribute("list", fileServiceImpl.selectAll()); - 자바DAO 방식
+		model.addAttribute("list", fileDAO.selectAll()); // mybatis 방식 
+		return "1207/list";
+	}
 	
-   @RequestMapping("form.do")
-   public String form() {
-      return "1207/form";
-   }
-   
-   @RequestMapping("upload.do")
-   public String upload(MultipartHttpServletRequest request,FileDTO dto)throws Exception {
-      // 파라미터로 전달된 업로드 파일을 받는다. 
-      MultipartFile mf = request.getFile("save");  // 원본파일객체
-      String fileName = mf.getOriginalFilename();  // 파일명 
-      dto.setOrgname(fileName);  // 파일의 원본이름을 DTO 추가 
-      int num = fileDAO.fileInsert(dto);
-      
-      // 파일명에서 확장자 찾기 
-      String ext = fileName.substring(fileName.lastIndexOf("."));
-      String saveName = "file_"+num+ext;
-      
-      // DB savename update / 글번호와 저장이름을 DTO 대입  
-      dto.setNum(num);
-      dto.setSavename(saveName);
-      
-      fileDAO.fileUpdate(dto);
-      //fileDAO.fileUpdate(dto);  // sql Update 진행 
-      
-      
-      //String savePath = "D:\\eclipse-workspace\\spring\\WebContent\\save\\";  // 업로드파일 저장경로 
-      String savePath = request.getRealPath("save");
-      File saveFile = new File(savePath+"\\"+saveName); // 저장위치 객체 
-      try {
-         mf.transferTo(saveFile);  // 파일 저장 (완료)!!
-      }catch(Exception e) {
-         e.printStackTrace();
-      }
-      return "redirect:/file/list.do";
-   }
-   // http://localhost:8080/spring/file/list.do
-   @RequestMapping("list.do")
-   public String list(Model model)throws Exception {
-      
-	  //model.addAttribute("list", FileServiceImpl.selectAll()); //->자바 DAO방식
-      model.addAttribute("list", fileDAO.selectAll()); //mybatis 방식
-      
-      return "1207/list";
-   }
-   
-   @RequestMapping("down.do")
-   public ModelAndView down(HttpServletRequest request , String file ) {
-	   String path = request.getRealPath("save")+"//"+file;
-	   File f = new File(path);
-	   ModelAndView mv = new ModelAndView("download" , "downloadFile" , f);
-	   								// bean id   , parameterName,	   
-	   return mv;   
-   }
-   
-   @RequestMapping("fileNum.do")
-   public String fileNum(int num , Model model , FileDTO dto) throws Exception {
-	   String id = fileDAO.selectId(num);
-	   List list = fileDAO.selectId(id);
-	   model.addAttribute("list", list);
-	   model.addAttribute("id", id);
-	   
-	   String orgname = fileDAO.selectFile(dto);
-	   model.addAttribute("orgname", orgname);
-	   return "1209/fileNum";
-   }
+	@RequestMapping("down.do")
+	public ModelAndView down(HttpServletRequest request , String file) {
+		String path = request.getRealPath("save")+"//"+file;
+		File f = new File(path);
+		ModelAndView mv = new ModelAndView("download" ,"downloadFile", f);
+										  // bean id  , parameterName,value
+		return mv;
+	}
+	
+	@RequestMapping("fileNum.do")
+	public String fileNum(int num , Model model , FileDTO dto) throws Exception{
+		String id = fileDAO.selectId(num);
+		model.addAttribute("id", id);
+		List list = fileDAO.selectId("aaa");
+		model.addAttribute("list", list);
+		String orgname = fileDAO.selectFile(dto);
+		model.addAttribute("orgname", orgname);
+		model.addAttribute("count" , fileDAO.selectCount());
+		
+		return "1209/fileNum";
+	}
+	
+	// http://localhost:8080/spring/file/main.do
+	@RequestMapping("main.do")
+	public String main() throws Exception{
+		
+		
+		
+		return "1210/main";
+	}
 }
+
+
+
+
+
+// 파일이름과 확장자 구분 
+// ex)  test.java.png 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

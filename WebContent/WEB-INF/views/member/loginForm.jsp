@@ -1,14 +1,16 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=euc-kr"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ include file="/resource/etc/color.jspf"%>
+<%--코드를 합친다. --%>
+<%@ include file="/resource/etc/color.jsp"%> 
+
 <html>
-<head>
-<title>로그인폼</title>
+<head><title>로그인</title>
 <link href="/spring/resource/style/style.css" rel="stylesheet" type="text/css">
-	<script language="javascript">
-     
+
+   <script language="javascript">
+     <!--
        function begin(){
          document.myform.id.focus();
        }
@@ -25,7 +27,7 @@
          }
          
        }
-     
+     -->
    </script>
 </head>
 <BODY onload="begin()" bgcolor="${bodyback_c}">
